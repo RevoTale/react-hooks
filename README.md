@@ -73,3 +73,9 @@ task validate
 task test
 task build
 ```
+
+## Release
+
+Use Conventional Commits on `main`. `release-please` opens the release PR; merging it creates the GitHub release and publishes to npm from CI.
+
+Configure npm Trusted Publishing for `.github/workflows/release-please.yml` after the first package publish.
