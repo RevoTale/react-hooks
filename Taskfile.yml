@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  install:
+    desc: Install dependencies with Bun
+    cmds:
+      - bun install
+
+  build:
+    desc: Build bundled package output
+    cmds:
+      - bun run build
+
+  biome:fix:
+    desc: Fix formatting and lint issues with Biome
+    cmds:
+      - bun run fix
+
+  fix:
+    desc: Auto-fix all code quality issues
+    cmds:
+      - task: biome:fix
+
+  validate:
+    desc: Run static validation
+    cmds:
+      - bun run validate
+
+  test:
+    desc: Run tests
+    cmds:
+      - bun run test
