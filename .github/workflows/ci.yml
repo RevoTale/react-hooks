@@ -35,3 +35,41 @@ jobs:
 
       - name: Build
         run: task build
+
+  compat:
+    name: Compat / ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: react-18
+            packages: react@18 react-dom@18 @types/react@18 @types/react-dom@18
+          - name: react-19
+            packages: react@19 react-dom@19 @types/react@19 @types/react-dom@19
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Setup Task
+        uses: go-task/setup-task@v2
+
+      - name: Install dependencies
+        run: bun ci
+
+      - name: Install compatibility packages
+        run: bun add -d --no-save ${{ matrix.packages }}
+
+      - name: Validate
+        run: task validate
+
+      - name: Test
+        run: task test
+
+      - name: Build
+        run: task build
