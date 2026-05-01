@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react'
 import useVariable from './useVariable'
 
-type OnceCallback = () => void
-
-const useOnce = (callback: OnceCallback): void => {
+const useOnce = (callback: () => void): void => {
 	const triggered = useRef(false)
 	const callbackRef = useVariable(callback)
 

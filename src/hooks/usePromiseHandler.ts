@@ -3,28 +3,28 @@ import useVariable from './useVariable'
 
 export type PromiseHandlerError = string | Error
 
-type StateIdle = {
+export type PromiseHandlerIdleState = {
 	readonly error: null
 	readonly loading: false
 	readonly promise: null
 	readonly result: null
 }
 
-type StateError<T> = {
+export type PromiseHandlerErrorState<T> = {
 	readonly error: PromiseHandlerError
 	readonly loading: false
 	readonly promise: Promise<T>
 	readonly result: null
 }
 
-type StateOk<T> = {
+export type PromiseHandlerOkState<T> = {
 	readonly error: null
 	readonly loading: false
 	readonly promise: Promise<T>
 	readonly result: T
 }
 
-type StateLoading<T> = {
+export type PromiseHandlerLoadingState<T> = {
 	readonly error: null
 	readonly loading: true
 	readonly promise: Promise<T>
@@ -32,10 +32,10 @@ type StateLoading<T> = {
 }
 
 export type PromiseState<T> =
-	| StateIdle
-	| StateError<T>
-	| StateOk<T>
-	| StateLoading<T>
+	| PromiseHandlerIdleState
+	| PromiseHandlerErrorState<T>
+	| PromiseHandlerOkState<T>
+	| PromiseHandlerLoadingState<T>
 
 export type PromiseHandlerOptions<T> = {
 	readonly onCompleted?: (data: T) => void
@@ -50,7 +50,7 @@ export type PromiseHandlerResult<T> = PromiseState<T> & {
 	) => void
 }
 
-const defaultState: StateIdle = {
+const defaultState: PromiseHandlerIdleState = {
 	error: null,
 	loading: false,
 	promise: null,

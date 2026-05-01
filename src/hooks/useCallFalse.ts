@@ -1,8 +1,6 @@
 import { useCallback } from 'react'
 
-type SetBoolean = (value: boolean) => void
-
-const useCallFalse = (setValue: SetBoolean): (() => void) => {
+const useCallFalse = (setValue: (value: boolean) => void): (() => void) => {
 	return useCallback(() => {
 		setValue(false)
 	}, [setValue])

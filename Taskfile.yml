@@ -7,9 +7,22 @@ tasks:
       - bun install
 
   build:
-    desc: Build bundled package output
+    desc: Build package output
     cmds:
       - bun run build
+
+  check:package:
+    desc: Validate package metadata, contents, and published types
+    cmds:
+      - bun run check:package
+
+  ci:
+    desc: Run the full local CI sequence
+    cmds:
+      - task: validate
+      - task: test
+      - task: build
+      - task: check:package
 
   biome:fix:
     desc: Fix formatting and lint issues with Biome

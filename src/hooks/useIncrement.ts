@@ -1,8 +1,8 @@
 import { type Dispatch, type SetStateAction, useCallback } from 'react'
 
-type SetNumberState = Dispatch<SetStateAction<number>>
-
-const useIncrement = (setValue: SetNumberState): (() => void) => {
+const useIncrement = (
+	setValue: Dispatch<SetStateAction<number>>,
+): (() => void) => {
 	return useCallback(() => {
 		setValue((previous) => previous + 1)
 	}, [setValue])

@@ -1,8 +1,8 @@
 import { type Dispatch, type SetStateAction, useCallback } from 'react'
 
-type SetBooleanState = Dispatch<SetStateAction<boolean>>
-
-const useToggle = (setValue: SetBooleanState): (() => void) => {
+const useToggle = (
+	setValue: Dispatch<SetStateAction<boolean>>,
+): (() => void) => {
 	return useCallback(() => {
 		setValue((previous) => !previous)
 	}, [setValue])

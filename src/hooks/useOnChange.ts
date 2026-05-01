@@ -2,9 +2,10 @@ import { type EffectCallback, useEffect } from 'react'
 import usePrevious from './usePrevious'
 import useVariable from './useVariable'
 
-type ChangeCallback<T> = (previous: T) => ReturnType<EffectCallback>
-
-const useOnChange = <T>(callback: ChangeCallback<T>, value: T): void => {
+const useOnChange = <T>(
+	callback: (previous: T) => ReturnType<EffectCallback>,
+	value: T,
+): void => {
 	const callbackRef = useVariable(callback)
 	const previous = usePrevious(value)
 
