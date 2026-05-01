@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/RevoTale/react-hooks/compare/react-hooks-v0.3.0...react-hooks-v0.3.1) (2026-05-01)
+
+
+### Bug Fixes
+
+* ci name ([83ef19c](https://github.com/RevoTale/react-hooks/commit/83ef19ccdf6b88d7eb619090c0df723f71210be6))
+* code quality ([f26ffb2](https://github.com/RevoTale/react-hooks/commit/f26ffb226e5394e7a92776f92d5652dd61442184))
+
 ## [0.3.0](https://github.com/RevoTale/react-hooks/compare/react-hooks-v0.2.0...react-hooks-v0.3.0) (2026-04-30)
 
 
