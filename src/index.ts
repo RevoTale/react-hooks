@@ -1,3 +1,5 @@
+'use client'
+
 export { default as useBool } from './hooks/useBool'
 export { default as useCallFalse } from './hooks/useCallFalse'
 export { default as useCallTrue } from './hooks/useCallTrue'

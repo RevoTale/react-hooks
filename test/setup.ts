@@ -1,34 +1,22 @@
-import { JSDOM } from 'jsdom'
+import { afterEach, expect } from 'bun:test'
+import { GlobalRegistrator } from '@happy-dom/global-registrator'
 
-const dom = new JSDOM('<!doctype html><html><body></body></html>', {
+GlobalRegistrator.register({
 	url: 'https://example.test/path',
 })
 
-Object.defineProperty(globalThis, 'window', {
-	value: dom.window,
-	writable: true,
-})
-Object.defineProperty(globalThis, 'document', {
-	value: dom.window.document,
-	writable: true,
-})
-Object.defineProperty(globalThis, 'navigator', {
-	value: dom.window.navigator,
-	writable: true,
-})
-Object.defineProperty(globalThis, 'HTMLElement', {
-	value: dom.window.HTMLElement,
-	writable: true,
-})
-Object.defineProperty(globalThis, 'KeyboardEvent', {
-	value: dom.window.KeyboardEvent,
-	writable: true,
-})
-Object.defineProperty(globalThis, 'Event', {
-	value: dom.window.Event,
-	writable: true,
-})
 Object.defineProperty(globalThis, 'IS_REACT_ACT_ENVIRONMENT', {
 	value: true,
 	writable: true,
+})
+
+const [{ cleanup }, matchers] = await Promise.all([
+	import('@testing-library/react'),
+	import('@testing-library/jest-dom/matchers'),
+])
+
+expect.extend(matchers)
+
+afterEach(() => {
+	cleanup()
 })

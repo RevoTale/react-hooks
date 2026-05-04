@@ -1,15 +1,7 @@
-import { useEffect, useState } from 'react'
+'use client'
+
 import useWindow from './useWindow'
 
-const useWindowHost = (): string | null => {
-	const [host, setHost] = useState<string | null>(null)
-	const currentWindow = useWindow()
-
-	useEffect(() => {
-		setHost(currentWindow?.location.host ?? null)
-	}, [currentWindow])
-
-	return host
-}
+const useWindowHost = (): string | null => useWindow()?.location.host ?? null
 
 export default useWindowHost

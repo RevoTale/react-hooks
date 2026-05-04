@@ -1,4 +1,4 @@
-import { access, readdir } from 'node:fs/promises'
+import { access, readdir, readFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
 
 async function listFiles(directory: string): Promise<string[]> {
@@ -33,3 +33,11 @@ await access('dist/index.mjs')
 await access('dist/index.cjs')
 await access('dist/index.d.mts')
 await access('dist/index.d.cts')
+
+for (const file of ['dist/index.mjs', 'dist/index.cjs']) {
+	const content = await readFile(file, 'utf8')
+
+	if (!content.startsWith('"use client";')) {
+		throw new Error(`Missing use client directive in ${file}`)
+	}
+}

@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
-import useWindow from './useWindow'
+'use client'
+
+import { useSyncExternalStore } from 'react'
 
 export interface WindowSize {
 	readonly width: number
@@ -11,37 +12,36 @@ const emptyWindowSize: WindowSize = {
 	height: 0,
 }
 
+let cachedWindowSize = emptyWindowSize
+
+const getWindowSize = (): WindowSize => {
+	const width = window.innerWidth
+	const height = window.innerHeight
+
+	if (cachedWindowSize.width === width && cachedWindowSize.height === height) {
+		return cachedWindowSize
+	}
+
+	cachedWindowSize = { width, height }
+	return cachedWindowSize
+}
+
+const getServerWindowSize = (): WindowSize => emptyWindowSize
+
+const subscribeToWindowSize = (callback: () => void): (() => void) => {
+	window.addEventListener('resize', callback)
+
+	return () => {
+		window.removeEventListener('resize', callback)
+	}
+}
+
 const useWindowSize = (): WindowSize => {
-	const currentWindow = useWindow()
-	const getWindowSize = useCallback((): WindowSize => {
-		if (!currentWindow) {
-			return emptyWindowSize
-		}
-
-		return {
-			width: currentWindow.innerWidth,
-			height: currentWindow.innerHeight,
-		}
-	}, [currentWindow])
-	const [windowSize, setWindowSize] = useState<WindowSize | null>(null)
-
-	useEffect(() => {
-		if (!currentWindow) {
-			return undefined
-		}
-
-		const listener = () => {
-			setWindowSize(getWindowSize())
-		}
-
-		currentWindow.addEventListener('resize', listener)
-
-		return () => {
-			currentWindow.removeEventListener('resize', listener)
-		}
-	}, [currentWindow, getWindowSize])
-
-	return windowSize ?? getWindowSize()
+	return useSyncExternalStore(
+		subscribeToWindowSize,
+		getWindowSize,
+		getServerWindowSize,
+	)
 }
 
 export default useWindowSize

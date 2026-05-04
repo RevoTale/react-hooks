@@ -1,3 +1,5 @@
+'use client'
+
 import useWindow from './useWindow'
 
 const useWindowOrigin = (): string | null =>

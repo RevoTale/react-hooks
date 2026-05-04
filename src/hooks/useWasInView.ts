@@ -1,3 +1,5 @@
+'use client'
+
 import { type RefObject, useCallback, useEffect, useMemo, useRef } from 'react'
 import useBool from './useBool'
 import useVariable from './useVariable'
@@ -34,14 +36,9 @@ const useWasInView = <T extends HTMLElement>({
 				: null,
 		[currentWindow],
 	)
+	const mounted = currentWindow !== null
 	const intersectionSupported = Boolean(IntersectionObserverConstructor)
-	const [wasVisible, setWasVisible] = useBool(
-		currentWindow
-			? intersectionSupported
-				? false
-				: fallbackInView
-			: ssrInView,
-	)
+	const [wasVisible, setWasVisible] = useBool(ssrInView)
 	const onInViewRef = useVariable(onInView)
 	const ref = useRef<T>(null)
 
@@ -56,10 +53,10 @@ const useWasInView = <T extends HTMLElement>({
 	useEffect(() => {
 		const element = ref.current
 
-		if (!intersectionSupported && fallbackInView && element) {
+		if (mounted && !intersectionSupported && fallbackInView && element) {
 			handleVisible(element)
 		}
-	}, [fallbackInView, handleVisible, intersectionSupported])
+	}, [fallbackInView, handleVisible, intersectionSupported, mounted])
 
 	useEffect(() => {
 		const element = ref.current

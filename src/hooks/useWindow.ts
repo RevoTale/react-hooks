@@ -1,9 +1,15 @@
-const useWindow = (): Window | null => {
-	if (typeof window === 'undefined') {
-		return null
-	}
+'use client'
 
-	return window
+import { useEffect, useState } from 'react'
+
+const useWindow = (): Window | null => {
+	const [currentWindow, setCurrentWindow] = useState<Window | null>(null)
+
+	useEffect(() => {
+		setCurrentWindow(window)
+	}, [])
+
+	return currentWindow
 }
 
 export default useWindow
