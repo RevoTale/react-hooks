@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.3](https://github.com/RevoTale/react-hooks/compare/react-hooks-v0.3.2...react-hooks-v0.3.3) (2026-05-04)
+
+
+### Bug Fixes
+
+* devcontainer codex mount ([90bcd69](https://github.com/RevoTale/react-hooks/commit/90bcd6914f72a3d28ae8ea4417cdcd7cd647f3b7))
+* ignore devcotnainer lock in validation ([87b95f7](https://github.com/RevoTale/react-hooks/commit/87b95f7dcdf14f8fa041bf96ce67cfefe418fe41))
+* publicm with provenance ([c311f64](https://github.com/RevoTale/react-hooks/commit/c311f64e963f6ca5f65df090123f62f6fd52a1ae))
+
 ## [0.3.2](https://github.com/RevoTale/react-hooks/compare/react-hooks-v0.3.1...react-hooks-v0.3.2) (2026-05-01)
 
 
