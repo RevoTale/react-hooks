@@ -15,6 +15,9 @@
 			"recommended": true
 		}
 	},
+	"files": {
+		"includes": ["**", "!.devcontainer/devcontainer-lock.json"]
+	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
