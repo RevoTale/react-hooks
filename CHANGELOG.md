@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/RevoTale/react-hooks/compare/react-hooks-v0.3.3...react-hooks-v0.3.4) (2026-05-04)
+
+
+### Bug Fixes
+
+* with latest NextJs version `useWindow` hook is cached, this caused lazy loading hooks to stopworking due to window always null. ([6adf54b](https://github.com/RevoTale/react-hooks/commit/6adf54b84a73122cc0d76944b165511295244f09))
+
 ## [0.3.3](https://github.com/RevoTale/react-hooks/compare/react-hooks-v0.3.2...react-hooks-v0.3.3) (2026-05-04)
 
 
