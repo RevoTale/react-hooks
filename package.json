@@ -1,6 +1,6 @@
 {
 	"name": "@revotale/react-hooks",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"description": "Small React hooks with a stable, typed API.",
 	"license": "MIT",
 	"author": "RevoTale",
