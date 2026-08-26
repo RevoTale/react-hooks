@@ -58,7 +58,7 @@
 		"prepack": "bun run build",
 		"prepublishOnly": "bun run validate && bun run test && bun run build && bun run check:package",
 		"test": "bun test --preload ./test/setup.ts",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "./node_modules/@typescript/native/bin/tsc --noEmit",
 		"validate": "bun run lint && bun run typecheck"
 	},
 	"peerDependencies": {
@@ -66,17 +66,18 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "0.18.2",
-		"@biomejs/biome": "^2.4.13",
+		"@biomejs/biome": "2.5.10",
 		"@happy-dom/global-registrator": "^20.9.0",
 		"@testing-library/dom": "^10.4.1",
 		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/react": "^16.3.2",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
+		"@typescript/native": "npm:typescript@^7.0.2",
 		"publint": "^0.3.18",
 		"react": "^19.2.5",
 		"react-dom": "^19.2.5",
 		"tsdown": "^0.21.10",
-		"typescript": "^6.0.0"
+		"typescript": "5.9.3"
 	}
 }
