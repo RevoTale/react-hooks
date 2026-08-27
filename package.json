@@ -65,16 +65,16 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.10",
-		"@happy-dom/global-registrator": "^20.11.6",
-		"@testing-library/dom": "^10.4.1",
-		"@testing-library/jest-dom": "^7.0.1",
-		"@testing-library/react": "^16.3.2",
+		"@happy-dom/global-registrator": "20.11.12",
+		"@testing-library/dom": "10.4.1",
+		"@testing-library/jest-dom": "7.0.1",
+		"@testing-library/react": "16.3.3",
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.5",
-		"publint": "^0.3.24",
-		"react": "^19.2.8",
-		"react-dom": "^19.2.8",
-		"tsdown": "^0.22.14",
+		"publint": "0.3.24",
+		"react": "19.2.8",
+		"react-dom": "19.2.8",
+		"tsdown": "0.22.14",
 		"typescript": "7.0.2"
 	}
 }
