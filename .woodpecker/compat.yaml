@@ -1,0 +1,18 @@
+when:
+  - event: pull_request
+  - event: push
+    branch: main
+
+matrix:
+  REACT: ['18', '19']
+
+steps:
+  - name: test-react
+    image: node:24-bookworm@sha256:9d266751ca3d7fdbe651c878ffd5ad0a42fed49a18c283509267c97f025b7496
+    commands:
+      - npm install --global bun@1.4.0 @go-task/cli@3.54.0
+      - bun ci
+      - bun add -d --no-save react@${REACT} react-dom@${REACT} @types/react@${REACT} @types/react-dom@${REACT}
+      - task validate
+      - task test
+      - task build
